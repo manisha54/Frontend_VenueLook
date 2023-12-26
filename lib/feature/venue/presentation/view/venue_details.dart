@@ -6,251 +6,269 @@ import '../../../../config/constants/api_endpoint.dart';
 import '../../../../config/router/app_route.dart';
 
 class VenueDetailsView extends ConsumerStatefulWidget {
-  const VenueDetailsView({super.key});
+  const VenueDetailsView({Key? key}) : super(key: key);
 
   @override
   ConsumerState<VenueDetailsView> createState() => _VenueDetailsViewState();
 }
 
 class _VenueDetailsViewState extends ConsumerState<VenueDetailsView> {
-  SizedBox gap = const SizedBox(height: 10);
   @override
   Widget build(BuildContext context) {
     var venueState = ref.watch(venueViewModelProvider);
+
+    // Simulated venue information for demonstration, replace with your actual data
+    List<String> venueInfo = [
+      'Seating Capacity-1000',
+      'Catering',
+      'Sound System',
+      'Decoration',
+      'Wifi',
+      'Parking'
+    ];
+
+    // Simulated ratings for demonstration, replace these with your actual rating data
+    List<int> ratings = [3, 4, 5, 2, 4];
+    ratings.sort(); // Sort ratings from small to large
+
+// Placeholder for review data structure
+    List<Map<String, dynamic>> reviews = [
+      {
+        'user': 'Manisha',
+        'profilePic': 'assets/images/naulo.jpg',
+        'review': 'This venue is awesome!',
+        'rating': 5,
+      },
+    ];
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Venue Details"),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: const Color(0xffff66c4),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(260),
+        child: AppBar(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+          ),
+          flexibleSpace: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    ApiEndpoints.imageUrl + venueState.singleVenue![0].picture,
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
         ),
-        body: ListView.builder(
-            shrinkWrap: true,
-            // physics: const NeverScrollableScrollPhysics(),
-            itemCount: venueState.venues.length,
-            itemBuilder: (context, index) {
-              return SingleChildScrollView(
-                child: SizedBox(
-                  height: 2000,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(2),
-                        child: Image.network(
-                          ApiEndpoints.imageUrl +
-                              venueState.singleVenue![index].picture,
-                          fit: BoxFit.cover,
-                        ),
+      ),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(13),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Venue Name and Per Plate
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      venueState.singleVenue![0].venueName,
+                      style: const TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w500,
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: Text(
-                              venueState.singleVenue![index].venueName,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                          SizedBox(
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, AppRoute.bookingRoute,
-                                      arguments:
-                                          venueState.venues[index].venueId);
-                                },
-                                child: const Text(
-                                  "Book venue",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )),
-                          ),
-                        ],
+                    ),
+                    Text(
+                      "Per Plate: ${venueState.singleVenue![0].perPlate}",
+                      style: const TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.normal,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "location : ${venueState.singleVenue![index].location}",
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            gap,
-                            const Divider(color: Color(0xffC0C0C0)),
-                            Text(
-                              "Contact Number : ${venueState.singleVenue![index].contactNumber}",
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            gap,
-                            const Divider(color: Color(0xffC0C0C0)),
-                            Text(
-                              "Established : ${venueState.singleVenue![index].established}",
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            gap,
-                            const Divider(color: Color(0xffC0C0C0)),
-                            Text(
-                              "Space preference : ${venueState.singleVenue![index].spacePreference}",
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            gap,
-                            const Divider(color: Color(0xffC0C0C0)),
-                            Text(
-                              "Venue type : ${venueState.singleVenue![index].venueType}",
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            gap,
-                            const Divider(color: Color(0xffC0C0C0)),
-                            Text(
-                              "Venue Hall Capacity : ${venueState.singleVenue![index].venueHallCapacity}",
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            gap,
-                            const Divider(color: Color(0xffC0C0C0)),
-
-                            Text(
-                              "Avance payment : ${venueState.singleVenue![index].advancePayment}",
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            gap,
-                            Text(
-                              "PerPlate : ${venueState.singleVenue![index].perPlate}",
-                              textAlign: TextAlign.start,
-                              style: const TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
-                            gap,
-
-                            //review
-                            const SizedBox(height: 10),
-                            const Divider(color: Color(0xffC0C0C0)),
-                            const SizedBox(height: 10),
-                            const Text(
-                              "Add your review",
-                              style: TextStyle(
-                                  fontSize: 30, fontWeight: FontWeight.bold),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.all(6),
-                              child: TextField(
-                                keyboardType: TextInputType.text,
-                                maxLines: null,
-                                minLines: 2,
-                                decoration: InputDecoration(
-                                    labelText: "  Type your review",
-                                    border: OutlineInputBorder(
-                                      borderSide: BorderSide(width: 0.5),
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(12),
-                                      ),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.pink,
-                                      ),
-                                    ),
-                                    contentPadding: EdgeInsets.symmetric(
-                                        vertical: 20.0, horizontal: 1.0)),
-                              ),
-                            ),
-                            gap,
-                            SizedBox(
-                              width: 150,
-                              height: 50,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                child: const Text(
-                                  "Add review",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            gap,
-                            SizedBox(
-                              width: 150,
-                              height: 50,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) => AlertDialog(
-                                            title: Text(
-                                                "Are you sure want to delete ${venueState.singleVenue![index].venueName}"),
-                                            actions: [
-                                              TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text('No')),
-                                              TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                    ref
-                                                        .read(
-                                                            venueViewModelProvider
-                                                                .notifier)
-                                                        .deleteVenue(
-                                                            context,
-                                                            venueState
-                                                                    .singleVenue![
-                                                                index]);
-                                                  },
-                                                  child: const Text('Yes')),
-                                            ],
-                                          ));
-                                },
-                                child: const Text(
-                                  "delete venue",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            const Text(
-                              "View All review",
-                              style: TextStyle(
-                                  fontSize: 30, fontWeight: FontWeight.bold),
-                            ),
-                            gap,
-                            // gap,
-                            // ListView.builder(
-                            //   itemBuilder: itemBuilder)
-                          ],
-                        ),
-                      )
-                    ],
+                    ),
+                  ],
+                ),
+                // Venue Location
+                Text(
+                  venueState.singleVenue![0].location,
+                  style: const TextStyle(
+                    fontSize: 23,
+                    fontWeight: FontWeight.normal,
                   ),
                 ),
+                // Ratings based on the simulated ratings
+                Row(
+                  children: ratings.map((rating) {
+                    return Icon(
+                      Icons.star,
+                      size: 20.0 + (rating * 2.0),
+                      color: Colors.yellow,
+                    );
+                  }).toList(),
+                ),
+                const SizedBox(height: 8),
+                // Venue Information section
+                const Text(
+                  "Venue Information",
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                // Display Venue Information
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: venueInfo.map((info) {
+                    return Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 23,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 2,
+                            ),
+                          ),
+                          child: const Icon(
+                            Icons.check,
+                            color: Colors.black,
+                            size: 18,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          info,
+                          style: const TextStyle(
+                            fontSize: 21,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
+          ),
+
+          // Reviews Section
+          const SizedBox(height: 2),
+          const Padding(
+            padding: EdgeInsets.all(13),
+            child: Text(
+              "Reviews",
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+
+// List of Reviews with User Profiles
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: reviews.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage(reviews[index]['profilePic']),
+                  radius: 20, // Increase the size of the profile picture
+                ),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          reviews[index]['user'],
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            const Icon(Icons.star, color: Colors.yellow),
+                            const SizedBox(width: 4),
+                            Text(
+                              reviews[index]['rating'].toString(),
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    //const SizedBox(height: 8),
+                    Text(
+                      reviews[index]['review'],
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                ),
               );
-            }));
+            },
+          ),
+
+          // Reviews Section (Existing code remains the same)
+
+          Padding(
+            padding: const EdgeInsets.all(13),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoute.checkAvailabilityRoute);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(12), // Rounded corners
+                    ),
+                  ),
+                  child: const Text(
+                    'Check Availability',
+                    style: TextStyle(fontSize: 25), // Adjust the font size
+                  ),
+                ),
+                const SizedBox(height: 10), // Add spacing between the buttons
+                ElevatedButton(
+                  onPressed: () {
+                    // Navigate to the booking screen and pass the venue ID as an argument
+                    Navigator.pushNamed(
+                      context,
+                      AppRoute.bookingRoute,
+                      arguments: venueState.singleVenue![0].venueId,
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(12), // Rounded corners
+                    ),
+                  ),
+                  child: const Text(
+                    'Booking',
+                    style: TextStyle(fontSize: 25), // Adjust the font size
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

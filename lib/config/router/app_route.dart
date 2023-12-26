@@ -2,6 +2,7 @@ import 'package:venue_look/feature/booking/presentation/view/booking_venue_view.
 import 'package:venue_look/feature/booking/presentation/view/update_booking_view.dart';
 import 'package:venue_look/feature/home/presentation/view/home_view.dart';
 import 'package:venue_look/feature/home/presentation/widget/aboutus_view.dart';
+import 'package:venue_look/feature/home/presentation/widget/check_availability.dart';
 import 'package:venue_look/feature/home/presentation/widget/edit_profile_view.dart';
 import 'package:venue_look/feature/home/presentation/widget/see_users_view.dart';
 import 'package:venue_look/feature/home/presentation/widget/setting_view.dart';
@@ -26,6 +27,7 @@ class AppRoute {
   static const String bookingRoute = '/booking';
   static const String updateBookingRoute = '/updatebooking';
   static const String seeUserRoute = '/seeUser';
+  static const String checkAvailabilityRoute = '/check';
 
   static getApplicationRoute() {
     return {
@@ -41,6 +43,7 @@ class AppRoute {
       bookingRoute: (context) => const BookingVenueView(),
       updateBookingRoute: (context) => const UpdateBookingView(),
       seeUserRoute: (context) => const SeeUserView(),
+      checkAvailabilityRoute: (context) => const CheckAvailability(),
     };
   }
 }

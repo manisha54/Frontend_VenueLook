@@ -25,7 +25,7 @@ class AppTheme {
       appBarTheme: const AppBarTheme(
         elevation: 0,
         // backgroundColor: Color(0xffff66c4),
-        backgroundColor: Color(0xFFFF1493),
+        backgroundColor: Color(0xFF41409E),
         centerTitle: true,
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 30),
       ),
@@ -40,7 +40,7 @@ class AppTheme {
       //elevated button
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF0BC7B7),
+        backgroundColor: const Color(0xFF41409E),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(90.0),
             )),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:venue_look/feature/home/presentation/widget/venue_widget.dart';
 
-import '../../../../../core/common/snackbar/my_snackbar.dart';
 import '../../../../user/presentation/viewmodel/user_view_model.dart';
 import '../../../../venue/presentation/viewmodel/venue_view_model.dart';
 
@@ -20,88 +19,124 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
     var venueState = ref.watch(venueViewModelProvider);
     var userState = ref.read(userViewModelProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Welcome To VenueLook',
-          style: TextStyle(
-              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
-        ),
-        // backgroundColor: Colors.white,
-        actions: [
-          IconButton(
-            onPressed: () {
-              ref.read(venueViewModelProvider.notifier).venues();
-              showSnackBar(message: 'Refressing...', context: context);
-            },
-            icon: const Icon(
-              Icons.refresh,
-              color: Color(0xFF0BC7B7),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(140), // Custom toolbar height
+        child: AppBar(
+          toolbarHeight: 140,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
             ),
           ),
-        ],
-      ),
-      body: ListView(
-        children: [
-          Padding(
+          title: Padding(
             padding: const EdgeInsetsDirectional.symmetric(
                 vertical: 15, horizontal: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF0BC7B7),
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
+                Container(
+                  width: double.infinity,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFE7E6E7),
+                    borderRadius: BorderRadius.circular(14),
                   ),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        CupertinoIcons.search,
-                        // color: Color(0xFF0BC7B7),
-                        color: Colors.black,
-                        size: 32,
-                      ),
-                      Expanded(
-                        child: SizedBox(
-                          height: 50,
-                          width: 300,
-                          //  color: Colors.amber,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: TextFormField(
-                              textAlign: TextAlign.center,
-                              decoration: const InputDecoration(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          CupertinoIcons.search,
+                          color: Colors.black,
+                          size: 32,
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            height: 50,
+                            width: 300,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
+                              child: TextFormField(
+                                textAlign: TextAlign.center,
+                                decoration: const InputDecoration(
                                   hintText: "Search Venue",
                                   hintStyle: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w400),
-                                  border: InputBorder.none),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  border: InputBorder.none,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                        const Icon(
+                          Icons.mic,
+                          color: Colors.black,
+                          size: 32,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsetsDirectional.symmetric(
+                vertical: 0, horizontal: 15),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const SizedBox(
+                height: 13,
               ),
-              const SizedBox(height: 13,),
-              const Text("Hi !!",
-              style: TextStyle(
-                fontSize: 25, fontWeight: FontWeight.w600,color: Color(0xFFFF1493)
-              ),),
-              // Text(
-              //   "${userState.users![0].fName} ${userState.users![0].lName}",
-              //   style:
-              //       const TextStyle(fontSize: 25, fontWeight: FontWeight.w600,color: Color(0xFFFF1493) ),
-              // ),
+              const Text(
+                "Vendor by Category",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 3), // Add initial padding
+                    _buildAvatarWithText('Catrer', 'assets/images/naulo.jpg'),
+                    const SizedBox(width: 8), // Add spacing between avatars
+                    _buildAvatarWithText(
+                        'Photographer', 'assets/images/naulo.jpg'),
+                    const SizedBox(width: 8), // Add spacing between avatars
+                     _buildAvatarWithText(
+                        'Photographer', 'assets/images/naulo.jpg'),
+                    const SizedBox(width: 8), // Add spacing between avatars
+                     _buildAvatarWithText(
+                        'Photographer', 'assets/images/naulo.jpg'),
+                    const SizedBox(width: 8), // Add spacing between avatars
+                     _buildAvatarWithText(
+                        'Photographer', 'assets/images/naulo.jpg'),
+                    const SizedBox(width: 8), // Add spacing between avatars
+                     _buildAvatarWithText(
+                        'Photographer', 'assets/images/naulo.jpg'),
+                    const SizedBox(width: 8), // Add spacing between avatars
+                     _buildAvatarWithText(
+                        'Photographer', 'assets/images/naulo.jpg'),
+                    const SizedBox(width: 8), // Add spacing between avatars
+                    
+                  ],
+                ),
+              )
             ]),
           ),
+
           const Padding(
             padding: EdgeInsets.only(top: 25, left: 10),
             child: Text(
@@ -116,4 +151,23 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
       ),
     );
   }
+}
+
+Widget _buildAvatarWithText(String text, String imagePath) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 0),
+    child: Column(
+      children: [
+        CircleAvatar(
+          radius: 50,
+          backgroundImage: AssetImage(imagePath),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          text,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
+      ],
+    ),
+  );
 }
