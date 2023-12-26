@@ -1,0 +1,61 @@
+[
+    {
+        "venueName": "Arpan banquet",
+        "established": "2008",
+        "location": "KumariPati, lalitpur",
+        "advancePayment": "3000",
+        "spacePreference": "indoor, outdoor",
+        "venueType": "party place",
+        "contactNumber": "987625672",
+        "perPlate": "Rs.800",
+        "venueHallCapacity": "1000",
+        "reviews": [
+          {
+            "text": "A night to remember! The venue was stylish, the cuisine was exquisite, and the service was exceptional. The organizers paid attention to every detail, ensuring a seamless and enjoyable event. The entertainment provided a perfect blend of excitement and elegance.",
+            "user": "64968dbd7f0dbbbfc904c665",
+            "userName": "punam Tharu",
+            "id": "64b24957d3564368da079b5c"
+          },
+          {
+            "text": "I regret to say that the banquet was a complete letdown. The venue wasunimpressive, with outdated decor and limited space. The food was bland and poorly prepared, lacking any culinary flair. ",
+          "user": "649826ded718907cf915d53b",
+          "userName": "Manisha Tharu",
+          "id": "64b24b14d3564368da079bd2"
+        }
+      ],
+      "createdAt": "2023-07-15T07:08:22.955Z",
+      "updatedAt": "2023-07-15T07:30:28.131Z",
+      "picture": "photo667dcf58-ce61-40ff-90b7-cd2aa02f993e.jpg",
+      "id": "64b245e6d3564368da079aeb"
+    },
+
+    {
+        "venueName": "Thapagun banquet",
+        "established": "2008",
+        "location": "Thapagaun, baneshwor",
+        "advancePayment": "4000",
+        "spacePreference": "indoor, outdoor",
+        "venueType": "party place",
+        "contactNumber": "926389178",
+        "perPlate": "Rs.900",
+        "venueHallCapacity": "1200",
+        "reviews": [
+          {
+            "text": "Excellent event with beautiful venue, delicious food, and attentive service. Enjoyable atmosphere and impressive organization.",
+            "user": "648ac23b713c4dc4df4a9dd7",
+            "userName": "Dinesh Tharu",
+            "id": "64b2486ad3564368da079b31"
+          },
+          {
+            "text": " Unfortunately, the banquet fell short of expectations. The venue lacked ambiance, the food was underwhelming, andthe service was disorganized. The entertainment was lackluster, leaving a lot to be desired. Overall, it was a disappointing experience that I would not recommend..",
+            "user": "64a17af01b4e976109f2d934",
+            "userName": "Ainram Tharu",
+            "id": "64b24a4ed3564368da079b9f"
+          }
+        ],
+        "createdAt": "2023-07-15T07:13:48.724Z",
+        "updatedAt": "2023-07-15T07:27:10.447Z",
+        "picture": "photo88e3c1ea-ba93-4dd3-935b-1536491f043d.jpg",
+        "id": "64b2472cd3564368da079af9"
+      }
+]
