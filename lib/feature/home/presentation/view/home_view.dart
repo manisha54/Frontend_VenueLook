@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:venue_look/feature/home/presentation/view/bottom_view/chat_view.dart';
 import 'package:venue_look/feature/home/presentation/view/bottom_view/dashboard_view.dart';
+import 'package:venue_look/feature/home/presentation/widget/favourite_view.dart';
 
-import 'bottom_view/booking_view.dart';
 import 'bottom_view/profile_view.dart';
 
 class HomeView extends ConsumerStatefulWidget {
@@ -19,9 +19,11 @@ class _HomeViewViewState extends ConsumerState<HomeView> {
   final List<Widget> _screen = [
     const DashboardView(),
     const ChatView(),
+     FavouriteView(),
     //const AddVenue(),
    // const AboutUsView(),
-    const BookingView(),
+
+    //const BookingView(),
     const ProfileView(),
   ];
   @override
@@ -36,7 +38,7 @@ class _HomeViewViewState extends ConsumerState<HomeView> {
             elevation: 0,
             items: const [
               BottomNavigationBarItem(
-                backgroundColor: Color(0xffff66c4),
+                backgroundColor: Color(0xFFD9D9EC),
                 icon: Icon(
                   Icons.home,
                   size: 45,
@@ -52,10 +54,10 @@ class _HomeViewViewState extends ConsumerState<HomeView> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.book_online_outlined,
+                  Icons.favorite,
                   size: 45,
                 ),
-                label: "Booking",
+                label: "favourite",
               ),
               //  BottomNavigationBarItem(
               //   icon: Icon(

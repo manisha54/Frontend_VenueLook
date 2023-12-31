@@ -145,203 +145,232 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            // height: 500,
-            child: Stack(
-              //   fit: StackFit.expand,
-              children: <Widget>[
-                ClipPath(
-                  clipper: CustomeShape(),
-                  child: Container(
-                    height: 210,
-                    color: const Color(0xffff66c4),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              // height: 500,
+              child: Stack(
+                //   fit: StackFit.expand,
+                children: <Widget>[
+                  ClipPath(
+                    clipper: CustomeShape(),
+                    child: Container(
+                      height: 210,
+                      color: const Color(0xffff66c4),
+                    ),
                   ),
-                ),
-                Center(
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          showModalBottomSheet(
-                            backgroundColor: Colors.grey[300],
-                            context: context,
-                            isScrollControlled: true,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(20),
+                  Center(
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            showModalBottomSheet(
+                              backgroundColor: Colors.grey[300],
+                              context: context,
+                              isScrollControlled: true,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(20),
+                                ),
                               ),
-                            ),
-                            builder: (context) => Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      _browseImage(ref, ImageSource.camera);
-                                      Navigator.pop(context);
-                                      // Upload image it is not null
-                                    },
-                                    icon: const Icon(Icons.camera),
-                                    label: const Text('Camera'),
-                                  ),
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      _browseImage(ref, ImageSource.gallery);
-                                      Navigator.pop(context);
-                                    },
-                                    icon: const Icon(Icons.image),
-                                    label: const Text('Gallery'),
-                                  ),
-                                ],
+                              builder: (context) => Padding(
+                                padding: const EdgeInsets.all(20),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    ElevatedButton.icon(
+                                      onPressed: () {
+                                        _browseImage(ref, ImageSource.camera);
+                                        Navigator.pop(context);
+                                        // Upload image it is not null
+                                      },
+                                      icon: const Icon(Icons.camera),
+                                      label: const Text('Camera'),
+                                    ),
+                                    ElevatedButton.icon(
+                                      onPressed: () {
+                                        _browseImage(ref, ImageSource.gallery);
+                                        Navigator.pop(context);
+                                      },
+                                      icon: const Icon(Icons.image),
+                                      label: const Text('Gallery'),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          );
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(40),
-                          child: SizedBox(
-                            height: 170,
-                            width: 200,
-                            child: CircleAvatar(
-                              radius: 50,
-                              backgroundImage: _img != null
-                                  ? FileImage(_img!)
-                                  : const AssetImage(
-                                          'assets/images/profile2.png')
-                                      as ImageProvider,
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(40),
+                            child: SizedBox(
+                              height: 170,
+                              width: 200,
+                              child: CircleAvatar(
+                                radius: 50,
+                                backgroundImage: _img != null
+                                    ? FileImage(_img!)
+                                    : const AssetImage(
+                                            'assets/images/profile2.png')
+                                        as ImageProvider,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-
-                       Text(
-                       userList![0].fName,
-                        style: const TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          // color: Colors.amber
-                        ),
-                      ),
-
-                      const SizedBox(height: 3,),
-                       Text(
-                       userList[0].email,
-                        style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFF8492A2)),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, AppRoute.editProfileRoute);
-                        },
-                        child: const Text(
-                          "Edit profile",
-                          style: TextStyle(
-                            fontSize: 20,
+      
+                         Text(
+                         userList![0].fName,
+                          style: const TextStyle(
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
+                            // color: Colors.amber
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-          const SizedBox(height: 10),
-          const Divider(),
-          const SizedBox(height: 20),
-          ListTile(
-            leading: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.grey.withOpacity(0.1),
+      
+                        const SizedBox(height: 3,),
+                         Text(
+                         userList[0].email,
+                          style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFF8492A2)),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, AppRoute.editProfileRoute);
+                          },
+                          child: const Text(
+                            "Edit profile",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
-              child: const Icon(Icons.settings),
             ),
-            title: const Text(
-              "Settings",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            trailing: Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
+            const SizedBox(height: 10),
+            const Divider(),
+            const SizedBox(height: 20),
+            ListTile(
+              leading: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
-                  color: Colors.grey.withOpacity(0.1)),
-              child: const Icon(Icons.chevron_right),
-            ),
-            onTap: () {
-              Navigator.pushNamed(context, AppRoute.settingRoute);
-            },
-          ),
-          const SizedBox(height: 10),
-          ListTile(
-            leading: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.grey.withOpacity(0.1),
+                  color: Colors.grey.withOpacity(0.1),
+                ),
+                child: const Icon(Icons.settings),
               ),
-              child: const Icon(Icons.question_answer_outlined),
-            ),
-            title: const Text(
-              "About us",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            trailing: Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: Colors.grey.withOpacity(0.1)),
-              child: const Icon(Icons.chevron_right),
-            ),
-            onTap: () {
-              Navigator.pushNamed(context, AppRoute.aboutUsRoute);
-            },
-          ),
-          const SizedBox(height: 10),
-          ListTile(
-            leading: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100),
-                color: Colors.grey.withOpacity(0.1),
+              title: const Text(
+                "Settings",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              child: const Icon(Icons.logout),
+              trailing: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.grey.withOpacity(0.1)),
+                child: const Icon(Icons.chevron_right),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, AppRoute.settingRoute);
+              },
             ),
-            onTap: () {
-              _logout();
-            },
-            title: const Text(
-              "Logout",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            trailing: Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
+            const SizedBox(height: 10),
+            ListTile(
+              leading: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
-                  color: Colors.grey.withOpacity(0.1)),
-              child: const Icon(Icons.chevron_right),
+                  color: Colors.grey.withOpacity(0.1),
+                ),
+                child: const Icon(Icons.question_answer_outlined),
+              ),
+              title: const Text(
+                "About us",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              trailing: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.grey.withOpacity(0.1)),
+                child: const Icon(Icons.chevron_right),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, AppRoute.aboutUsRoute);
+              },
             ),
-          ),
-        ],
+          //  const SizedBox(height: 10),
+            ListTile(
+              leading: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: Colors.grey.withOpacity(0.1),
+                ),
+                child: const Icon(Icons.question_answer_outlined),
+              ),
+              title: const Text(
+                "My Bookings",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              trailing: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.grey.withOpacity(0.1)),
+                child: const Icon(Icons.chevron_right),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, AppRoute.bookingDetailView);
+              },
+            ),
+            const SizedBox(height: 10),
+            ListTile(
+              leading: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: Colors.grey.withOpacity(0.1),
+                ),
+                child: const Icon(Icons.logout),
+              ),
+              onTap: () {
+                _logout();
+              },
+              title: const Text(
+                "Logout",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              trailing: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.grey.withOpacity(0.1)),
+                child: const Icon(Icons.chevron_right),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -230,6 +230,22 @@ class _VenueDetailsViewState extends ConsumerState<VenueDetailsView> {
               children: [
                 ElevatedButton(
                   onPressed: () {
+                    Navigator.pushNamed(context, AppRoute.chatwithUsRoute);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(12), // Rounded corners
+                    ),
+                  ),
+                  child: const Text(
+                    'Chat With Us',
+                    style: TextStyle(fontSize: 25), // Adjust the font size
+                  ),
+                ),
+                const SizedBox(height: 10), 
+                ElevatedButton(
+                  onPressed: () {
                     Navigator.pushNamed(context, AppRoute.checkAvailabilityRoute);
                   },
                   style: ElevatedButton.styleFrom(

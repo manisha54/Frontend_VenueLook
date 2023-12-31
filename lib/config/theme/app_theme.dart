@@ -11,7 +11,7 @@ class AppTheme {
               primary: ThemeConstant.darkPrimaryColor,
             )
           : const ColorScheme.light(
-              primary: Color(0xFFFF1493),
+              primary: Color.fromARGB(255, 235, 229, 232),
             ),
       brightness: isDark ? Brightness.dark : Brightness.light,
       // colorScheme: const ColorScheme.light(primary: Colors.black),
@@ -19,7 +19,7 @@ class AppTheme {
       useMaterial3: true,
       dividerColor: const Color(0xffC0C0C0),
       progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: Color.fromARGB(255, 240, 71, 204),
+        color: Color(0xFF41409E)
       ),
       //change appbar
       appBarTheme: const AppBarTheme(
@@ -32,9 +32,9 @@ class AppTheme {
 
       //bottom navigation
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.yellow,
-        unselectedItemColor: Color(0xFF02695A),
-        backgroundColor: Color(0xFF0BC7B7),
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Color(0xFF9CA3AF),
+        //backgroundColor: Color(0xFF0BC7B7),
       ),
 
       //elevated button
