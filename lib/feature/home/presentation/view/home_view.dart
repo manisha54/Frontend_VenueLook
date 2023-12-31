@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:venue_look/feature/home/presentation/view/bottom_view/chat_view.dart';
 import 'package:venue_look/feature/home/presentation/view/bottom_view/dashboard_view.dart';
 
-import 'bottom_view/add_venue.dart';
 import 'bottom_view/booking_view.dart';
 import 'bottom_view/profile_view.dart';
 
@@ -18,10 +18,10 @@ class _HomeViewViewState extends ConsumerState<HomeView> {
 
   final List<Widget> _screen = [
     const DashboardView(),
-    const AddVenue(),
+    const ChatView(),
+    //const AddVenue(),
    // const AboutUsView(),
     const BookingView(),
-    //const SeeUserView(),
     const ProfileView(),
   ];
   @override
@@ -45,10 +45,10 @@ class _HomeViewViewState extends ConsumerState<HomeView> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.camera_alt,
+                  Icons.chat,
                   size: 45,
                 ),
-                label: "Add venue",
+                label: "Chat",
               ),
               BottomNavigationBarItem(
                 icon: Icon(
