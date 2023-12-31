@@ -23,7 +23,7 @@ class VenueWidget extends StatelessWidget {
           const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.all(9.0),
+          padding: const EdgeInsets.all(5.0),
           child: InkWell(
             onTap: () {
               ref

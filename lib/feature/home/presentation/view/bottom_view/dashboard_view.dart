@@ -109,27 +109,18 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    const SizedBox(width: 3), // Add initial padding
+                   // const SizedBox(width: 0), // Add initial padding
                     _buildAvatarWithText('Catrer', 'assets/images/naulo.jpg'),
                     const SizedBox(width: 8), // Add spacing between avatars
                     _buildAvatarWithText(
                         'Photographer', 'assets/images/naulo.jpg'),
                     const SizedBox(width: 8), // Add spacing between avatars
                      _buildAvatarWithText(
-                        'Photographer', 'assets/images/naulo.jpg'),
+                        'Musician', 'assets/images/naulo.jpg'),
                     const SizedBox(width: 8), // Add spacing between avatars
                      _buildAvatarWithText(
-                        'Photographer', 'assets/images/naulo.jpg'),
-                    const SizedBox(width: 8), // Add spacing between avatars
-                     _buildAvatarWithText(
-                        'Photographer', 'assets/images/naulo.jpg'),
-                    const SizedBox(width: 8), // Add spacing between avatars
-                     _buildAvatarWithText(
-                        'Photographer', 'assets/images/naulo.jpg'),
-                    const SizedBox(width: 8), // Add spacing between avatars
-                     _buildAvatarWithText(
-                        'Photographer', 'assets/images/naulo.jpg'),
-                    const SizedBox(width: 8), // Add spacing between avatars
+                        'Magician', 'assets/images/naulo.jpg'),
+                    
                     
                   ],
                 ),
