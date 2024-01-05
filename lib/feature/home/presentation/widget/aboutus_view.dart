@@ -12,13 +12,18 @@ class _AboutUsViewState extends ConsumerState<AboutUsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "About Us",
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70), // Custom toolbar height
+        child: AppBar(
+          title: const Text("About Us"),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
         ),
-        centerTitle: true,
-        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(children: [
@@ -30,7 +35,7 @@ class _AboutUsViewState extends ConsumerState<AboutUsView> {
                 text: const TextSpan(
                   text: ("Venue"),
                   style: TextStyle(
-                    color: Color(0xFFFF1493),
+                    color: Color(0xFF41409E),
                     fontWeight: FontWeight.bold,
                     fontSize: 32,
                   ),
@@ -39,7 +44,7 @@ class _AboutUsViewState extends ConsumerState<AboutUsView> {
                       text: "Look",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 55, 211, 201),
+                    color: Color(0xFFFF1493),
                       ),
                     ),
                   ],

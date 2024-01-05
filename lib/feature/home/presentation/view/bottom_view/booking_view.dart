@@ -19,9 +19,17 @@ class _BookingViewState extends ConsumerState<BookingView> {
     var bookingState = ref.watch(bookingViewModelProvider);
     var venuestate = ref.watch(venueViewModelProvider);
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Your booking"),
-          elevation: 0,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70), // Custom toolbar height
+        child: AppBar(
+          title: const Text("Your Booking"),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
           actions: [
             IconButton(
               onPressed: () {
@@ -35,6 +43,8 @@ class _BookingViewState extends ConsumerState<BookingView> {
             ),
           ],
         ),
+      ),
+        
         body: Column(
           children: [
             Flexible(

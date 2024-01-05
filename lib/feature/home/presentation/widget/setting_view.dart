@@ -14,14 +14,18 @@ class _SettingViewState extends ConsumerState<SettingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Setting",
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70), // Custom toolbar height
+        child: AppBar(
+          title: const Text("Setting"),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
         ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: const Color(0xFFFF1493),
       ),
       body: Padding(
         padding: const EdgeInsets.all(7),
