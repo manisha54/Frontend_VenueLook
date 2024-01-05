@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:venue_look/config/router/app_route.dart';
 
 class ChatView extends ConsumerStatefulWidget {
   const ChatView({Key? key}) : super(key: key);
@@ -10,16 +11,14 @@ class ChatView extends ConsumerStatefulWidget {
 
 class _ChatViewState extends ConsumerState<ChatView> {
   final List<String> venues = [
-    'Kimchi banquet',
-    'Durbar Banquet',
-    'PhotoGrapher',
+    'Sajha banquet',
+    
     // Add more venues as needed
   ];
 
   final List<String> messages = [
     'One of the famous banquet with good service',
-    'affordable with good environment',
-    'Best Photo Grapher',
+    
     // Add more messages as needed
   ];
 
@@ -34,64 +33,78 @@ class _ChatViewState extends ConsumerState<ChatView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Inbox"),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70), // Custom toolbar height
+        child: AppBar(
+          title: const Text("Chat"),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
+        ),
       ),
       body: ListView.builder(
         itemCount: venues.length,
         itemBuilder: (context, index) {
           String venueName = venues[index];
           String message = messages[index];
-      //    String imagePath = 'assets/images/1_$index.jpg';
 
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: ClipOval(
-                    child: Image.asset(
-                      avatarImages[index],
-                      fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () {
+            Navigator.pushNamed(context, AppRoute.chatwithUsRoute);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: ClipOval(
+                      child: Image.asset(
+                        avatarImages[index],
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        venueName,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          venueName,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 9),
-                      Text(
-                        message,
-                        style: const TextStyle(
-                          color: Colors.black87,
+                        const SizedBox(height: 9),
+                        Text(
+                          message,
+                          style: const TextStyle(
+                            color: Colors.black87,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        '12:45 PM',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12,
+                        const SizedBox(height: 8),
+                        const Text(
+                          '12:45 PM',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },

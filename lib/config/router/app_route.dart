@@ -1,10 +1,12 @@
 import 'package:venue_look/feature/booking/presentation/view/booking_venue_view.dart';
 import 'package:venue_look/feature/booking/presentation/view/update_booking_view.dart';
+import 'package:venue_look/feature/home/presentation/view/bottom_view/add_venue.dart';
 import 'package:venue_look/feature/home/presentation/view/bottom_view/booking_view.dart';
 import 'package:venue_look/feature/home/presentation/view/home_view.dart';
 import 'package:venue_look/feature/home/presentation/widget/aboutus_view.dart';
 import 'package:venue_look/feature/home/presentation/widget/chat_with_us.dart';
 import 'package:venue_look/feature/home/presentation/widget/edit_profile_view.dart';
+import 'package:venue_look/feature/home/presentation/widget/language_view.dart';
 import 'package:venue_look/feature/home/presentation/widget/see_users_view.dart';
 import 'package:venue_look/feature/home/presentation/widget/setting_view.dart';
 import 'package:venue_look/feature/home/presentation/widget/update_password_view.dart';
@@ -33,7 +35,8 @@ class AppRoute {
   static const String checkAvailabilityRoute = '/check';
   static const String chatwithUsRoute = '/chat';
   static const String bookingDetailView = '/bpookingdetail';
-  
+  static const String addVenueRoute = '/addVenue';
+  static const String languageViewRoute = '/language';
 
   static getApplicationRoute() {
     return {
@@ -52,6 +55,8 @@ class AppRoute {
       checkAvailabilityRoute: (context) => const CheckAvailability(),
       chatwithUsRoute: (context) => const ChatWithUs(),
       bookingDetailView: (context) => const BookingView(),
+      addVenueRoute: (context) => const AddVenue(),
+      languageViewRoute: (context) => const LanguageView(),
     };
   }
 }

@@ -25,8 +25,8 @@ class _DashboardViewState extends ConsumerState<DashboardView> {
           toolbarHeight: 140,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
             ),
           ),
           title: Padding(

@@ -17,7 +17,7 @@ class _ChatWithUsState extends ConsumerState<ChatWithUs> {
     super.initState();
     _messages = [
       ChatMessage(text: "Hello! How can I help you?", isOwner: false), // Initial message
-      ChatMessage(text: "Can you send me more pictures?", isOwner: true), // Reply message
+     // ChatMessage(text: "Can you send me more pictures?", isOwner: true), // Reply message
     ];
   }
 
@@ -39,8 +39,18 @@ class _ChatWithUsState extends ConsumerState<ChatWithUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Sajha Banquet"),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70), // Custom toolbar height
+        child: AppBar(
+          title: const Text("Sajha banquet"),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
+        ),
       ),
       body: Column(
         children: [

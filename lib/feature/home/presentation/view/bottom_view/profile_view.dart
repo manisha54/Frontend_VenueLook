@@ -119,11 +119,11 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
   @override
   Widget build(BuildContext context) {
     var userState = ref.read(userViewModelProvider);
-      List<UserEntity>? userList = userState.users;
+    List<UserEntity>? userList = userState.users;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color(0xffff66c4),
+       backgroundColor: const Color(0xFF41409E),
         actions: [
           Switch(
               value: isDark,
@@ -133,14 +133,14 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                   ref.read(isDarkThemeProvider.notifier).updateTheme(value);
                 });
               }),
-              IconButton(
+          IconButton(
             onPressed: () {
               ref.read(userViewModelProvider.notifier).getUserInfo();
               showSnackBar(message: 'Refressing...', context: context);
             },
             icon: const Icon(
               Icons.refresh,
-              color: Color(0xFF0BC7B7),
+              color: Color.fromARGB(255, 240, 242, 242),
             ),
           ),
         ],
@@ -157,7 +157,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                     clipper: CustomeShape(),
                     child: Container(
                       height: 210,
-                      color: const Color(0xffff66c4),
+                      color: const Color(0xFF41409E),
                     ),
                   ),
                   Center(
@@ -219,19 +219,19 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                             ),
                           ),
                         ),
-      
-                         Text(
-                         userList![0].fName,
+                        Text(
+                          userList![0].fName,
                           style: const TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
                             // color: Colors.amber
                           ),
                         ),
-      
-                        const SizedBox(height: 3,),
-                         Text(
-                         userList[0].email,
+                        const SizedBox(
+                          height: 3,
+                        ),
+                        Text(
+                          userList[0].email,
                           style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w400,
@@ -315,7 +315,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 Navigator.pushNamed(context, AppRoute.aboutUsRoute);
               },
             ),
-          //  const SizedBox(height: 10),
+            const SizedBox(height: 10),
             ListTile(
               leading: Container(
                 width: 40,
@@ -324,7 +324,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.grey.withOpacity(0.1),
                 ),
-                child: const Icon(Icons.question_answer_outlined),
+                child: const Icon(Icons.book_online),
               ),
               title: const Text(
                 "My Bookings",
@@ -342,6 +342,71 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 Navigator.pushNamed(context, AppRoute.bookingDetailView);
               },
             ),
+
+            const SizedBox(height: 10),
+            ListTile(
+              leading: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: Colors.grey.withOpacity(0.1),
+                ),
+                child: const Icon(Icons.language),
+              ),
+              title: const Text(
+                "Language",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              trailing: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.grey.withOpacity(0.1)),
+                child: const Icon(Icons.chevron_right),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, AppRoute.languageViewRoute);
+              },
+            ),
+
+
+            // const SizedBox(height: 10),
+            // ListTile(
+            //   leading: Container(
+            //     width: 40,
+            //     height: 40,
+            //     decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(100),
+            //       color: Colors.grey.withOpacity(0.1),
+            //     ),
+            //     child: const Icon(Icons.book_online),
+            //   ),
+            //   title: const Text(
+            //     "Add Venue",
+            //     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            //   ),
+            //   trailing: Container(
+            //     width: 30,
+            //     height: 30,
+            //     decoration: BoxDecoration(
+            //         borderRadius: BorderRadius.circular(100),
+            //         color: Colors.grey.withOpacity(0.1)),
+            //     child: const Icon(Icons.chevron_right),
+            //   ),
+            //   onTap: () {
+            //     Navigator.pushNamed(context, AppRoute.addVenueRoute);
+            //   },
+            // ),
+
+
+
+
+
+
+
+
             const SizedBox(height: 10),
             ListTile(
               leading: Container(

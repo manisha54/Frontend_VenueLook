@@ -30,7 +30,7 @@ class _BookingViewState extends ConsumerState<BookingView> {
               },
               icon: const Icon(
                 Icons.refresh,
-                color: Color(0xFF0BC7B7),
+                color: Color.fromARGB(255, 239, 243, 243),
               ),
             ),
           ],

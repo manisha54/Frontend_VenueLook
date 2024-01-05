@@ -35,10 +35,18 @@ class _BookingVenueViewState extends ConsumerState<BookingVenueView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Book Venue"),
-        centerTitle: true,
-        elevation: 0,
+     appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70), // Custom toolbar height
+        child: AppBar(
+          title: const Text("Book Venue"),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

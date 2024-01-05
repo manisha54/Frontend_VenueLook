@@ -12,8 +12,10 @@ class SignInView extends ConsumerStatefulWidget {
 }
 
 final mykey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+final _emailController = TextEditingController();
+final _passwordController = TextEditingController();
+bool rememberMe = false; // Declare this boolean variable in your widget class
+
 class _SignInViewState extends ConsumerState<SignInView> {
   bool passwordvisibility = true;
   @override
@@ -46,21 +48,30 @@ class _SignInViewState extends ConsumerState<SignInView> {
                     text: "Venue",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFFFF1493),
+                      color: Color(0xFF41409E),
                     ),
                   ),
                   TextSpan(
                     text: "Look",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 55, 211, 201),
+                      color: Color(0xFFFF1493),
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 20), // Space between text elements
+          const Text(
+            "Use credentials to access your account !!",
+            style: TextStyle(
+              color: Colors.black87,
+              fontSize: 20,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          //const SizedBox(height: 10),
           Flexible(
             child: Container(
               height: 880,
@@ -69,7 +80,7 @@ class _SignInViewState extends ConsumerState<SignInView> {
                   topRight: Radius.circular(70),
                   topLeft: Radius.circular(70),
                 ),
-                color: Color(0xffff66c4),
+                // color: Color.fromARGB(255, 212, 209, 247),
               ),
               child: SingleChildScrollView(
                 child: Padding(
@@ -83,30 +94,52 @@ class _SignInViewState extends ConsumerState<SignInView> {
                           controller: _emailController,
                           keyboardType: TextInputType.text,
                           decoration: const InputDecoration(
+                            hintText: 'Enter the email Name',
                             prefixIcon: Icon(
                               Icons.email,
-                              color: Color(0xFF0BC7B7),
+                              color: Color(0xFF7F7F7F),
                             ),
                             filled: true,
-                            fillColor: Colors.white,
-                            hintText: 'Enter the email',
+                            fillColor: Color(0xffF3F4F6),
                             contentPadding: EdgeInsets.symmetric(
-                                vertical: 16.0, horizontal: 20),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(17),
-                              ),
+                              vertical: 16.0,
+                              horizontal: 20,
                             ),
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(25),
-                                )),
+                              borderSide: BorderSide(
+                                color: Color(0xffD9D9EC), // Outline color
+                                width: 2.0, // Outline width
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xffF3F4F6), // Focus outline color
+                                width: 2.0, // Focus outline width
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.red, // Error outline color
+                                width: 2.0, // Error outline width
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                            ),
+                            errorStyle: TextStyle(
+                                color: Colors.red), // Error text color
+                            // Other InputDecoration properties...
                           ),
                           style: const TextStyle(
-                              fontSize: 19, color: Colors.black),
+                            fontSize: 19,
+                            color: Colors.black87,
+                          ),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please the email';
@@ -121,9 +154,10 @@ class _SignInViewState extends ConsumerState<SignInView> {
                           obscureText: passwordvisibility,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
+                            hintText: 'Enter the Password',
                             prefixIcon: const Icon(
                               Icons.lock,
-                              color: Color(0xFF0BC7B7),
+                              color: Color(0xFF7F7F7F),
                             ),
                             suffixIcon: IconButton(
                               onPressed: () {
@@ -134,30 +168,49 @@ class _SignInViewState extends ConsumerState<SignInView> {
                               icon: Icon(passwordvisibility
                                   ? Icons.visibility_off
                                   : Icons.visibility),
-                              color: const Color(0xFF0BC7B7),
+                              color: const Color(0xFF7F7F7F),
                             ),
                             filled: true,
-                            fillColor: Colors.white,
-                            hintText: 'Enter the password',
-                            //   helperText: 'Password must contain special character',
+                            fillColor: const Color(0xffF3F4F6),
                             contentPadding: const EdgeInsets.symmetric(
-                                vertical: 16.0, horizontal: 40.0),
-                            border: const OutlineInputBorder(
+                              vertical: 16.0,
+                              horizontal: 20,
+                            ),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xffD9D9EC), // Outline color
+                                width: 2.0, // Outline width
+                              ),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20),
                               ),
                             ),
-                            enabledBorder: const OutlineInputBorder(
+                            focusedBorder: const OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.white,
+                                color: Color(0xffF3F4F6), // Focus outline color
+                                width: 2.0, // Focus outline width
                               ),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(25),
+                                Radius.circular(20),
                               ),
                             ),
+                            errorBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.red, // Error outline color
+                                width: 2.0, // Error outline width
+                              ),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                            ),
+                            errorStyle: const TextStyle(
+                                color: Colors.red), // Error text color
+                            // Other InputDecoration properties...
                           ),
                           style: const TextStyle(
-                              fontSize: 19, color: Colors.black),
+                            fontSize: 19,
+                            color: Colors.black87,
+                          ),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter the password';
@@ -166,22 +219,62 @@ class _SignInViewState extends ConsumerState<SignInView> {
                           },
                         ),
 
+                        // Remember Me toggle
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Checkbox(
+                                  value: rememberMe,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      rememberMe = value!;
+                                    });
+                                  },
+                                ),
+                                const Text('Remember Me'),
+                              ],
+                            ),
+                            const Spacer(), // Pushes the "Forgot Password?" text to the right
+                            TextButton(
+                              onPressed: () {
+                                // Handle forgot password logic
+                              },
+                              child: const Text(
+                                'Forgot Password?',
+                                style: TextStyle(
+                                  color: Color(0xFF41409E),
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            // You can add additional widgets or adjust the layout here
+                          ],
+                        ),
+
                         //button
                         const SizedBox(height: 50),
                         ConstrainedBox(
                           constraints: const BoxConstraints.tightFor(
-                              width: 250, height: 85),
+                              width: 400, height: 55),
                           child: ElevatedButton(
-                            onPressed: () async{
-                             if (mykey.currentState!.validate()) {
-                           await ref
-                              .read(userViewModelProvider.notifier)
-                              .loginUser(
-                                context,
-                                _emailController.text,
-                                _passwordController.text,
-                              );
-                             }
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              // backgroundColor: Colors.green, // Change button color as needed
+                            ),
+                            onPressed: () async {
+                              if (mykey.currentState!.validate()) {
+                                await ref
+                                    .read(userViewModelProvider.notifier)
+                                    .loginUser(
+                                      context,
+                                      _emailController.text,
+                                      _passwordController.text,
+                                    );
+                              }
                             },
                             child: const Text("Login",
                                 style: TextStyle(

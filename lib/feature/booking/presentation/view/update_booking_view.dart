@@ -34,10 +34,18 @@ class _UpdateBookingViewState extends ConsumerState<UpdateBookingView> {
   Widget build(BuildContext context) {
     var bookingState = ref.watch(bookingViewModelProvider);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Update Booking"),
-        centerTitle: true,
-        elevation: 0,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70), // Custom toolbar height
+        child: AppBar(
+          title: const Text("Update Booking"),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),

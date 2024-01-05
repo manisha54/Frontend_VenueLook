@@ -40,8 +40,18 @@ class FavouriteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Favourite"),
+     appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70), // Custom toolbar height
+        child: AppBar(
+          title: const Text("Favourite"),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: GridView.builder(

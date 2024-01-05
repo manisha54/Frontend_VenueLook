@@ -45,8 +45,18 @@ class _CheckAvailabilityState extends State<CheckAvailability> {
     final Map<DateTime, List<dynamic>> events = _generateEvents(bookedDates);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Check Availability"),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70), // Custom toolbar height
+        child: AppBar(
+          title: const Text("Check Availability"),
+          toolbarHeight: 80,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+          ),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
